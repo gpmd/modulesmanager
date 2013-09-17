@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <adminhtml_modulesmanager_index>
+        <reference name="head">
+            <action method="addJs"><file>modulesmanager/manager-button.js</file></action>
+        </reference>
+        <reference name="content">
+            <block type="modulesmanager/adminhtml_modules_list" name="modules_list" template="modulesmanager/modules/list.phtml"/>
+        </reference>
+    </adminhtml_modulesmanager_index>
+</layout>

@@ -1,0 +1,5 @@
+app/code/local/GPMD/ModulesManager app/code/local/GPMD/ModulesManager
+app/design/adminhtml/default/default/layout/modulesmanager app/design/adminhtml/default/default/layout/modulesmanager
+app/design/adminhtml/default/default/template/modulesmanager app/design/adminhtml/default/default/template/modulesmanager
+app/etc/modules/GPMD_ModulesManager.xml app/etc/modules/GPMD_ModulesManager.xml
+js/modulesmanager js/modulesmanager

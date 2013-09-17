@@ -1,0 +1,12 @@
+{
+   "name": "gpmd/modulesmanager",
+    "description": "GPMD Modules Manager",
+    "minimum-stability": "dev",
+    "type": "magento-module",
+    "authors": [
+        {
+            "name": "Carlo Tasca",
+            "email": "dev@gpmd.co.uk"
+        }
+    ]
+}

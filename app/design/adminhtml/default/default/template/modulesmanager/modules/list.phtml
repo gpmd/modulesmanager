@@ -1,0 +1,15 @@
+<script type="text/javascript">
+    var managerButton = new ModulesManagerButton("<?php echo Mage::getUrl('*/*/setModuleStatus') ?>")
+</script>
+<div class="grid np">
+    <table cellspacing="0" style="border:0;" id="modulesManager_table">
+        <colgroup>
+            <col/>
+            <col width="120"/>
+            <col width="120"/>
+            <col width="120"/>
+        </colgroup>
+        <?php echo $this->getTableHeadHtml() ?>
+        <?php echo $this->getTableBodyHtml() ?>
+    </table>
+</div>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <modulesmanager translate="title" module="modulesmanager">
+            <title>Modules</title>
+            <sort_order>1500</sort_order>
+            <children>
+                <index translate="title" module="modulesmanager">
+                    <title>Manager</title>
+                    <sort_order>1</sort_order>
+                    <action>adminhtml/modulesmanager/index</action>
+                </index>
+            </children>
+        </modulesmanager>
+    </menu>
+</config>
