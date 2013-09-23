@@ -8,5 +8,8 @@
             "name": "Carlo Tasca",
             "email": "dev@gpmd.co.uk"
         }
-    ]
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "dev-master"
+    }
 }
