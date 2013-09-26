@@ -8,7 +8,7 @@ ModulesManagerButton.prototype = {
 
     save: function(form){
         this.form = form;
-        params = Form.serialize(this.form);
+        params = Form.serialize(this.form) + '&' + Form.serialize('srlzdepends-form');
         var request = new Ajax.Request(
             this.saveUrl,
             {

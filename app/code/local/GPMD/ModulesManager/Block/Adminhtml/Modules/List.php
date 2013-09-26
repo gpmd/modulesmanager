@@ -44,6 +44,8 @@ class GPMD_ModulesManager_Block_Adminhtml_Modules_List extends Mage_Adminhtml_Bl
     protected $_moduleXmlPath;
     protected $_moduleXmlName;
     protected $_modules = array();
+    protected $_depends = array();
+    protected $_serializedDepends;
     protected $_errors = array();
 
     /**
@@ -137,6 +139,22 @@ class GPMD_ModulesManager_Block_Adminhtml_Modules_List extends Mage_Adminhtml_Bl
     protected function _getModulesNodeChildren()
     {
         return $this->getXml()->getXml()->modules->children();
+    }
+
+    /**
+     * Feeds _depends instance var
+     */
+    protected function _collectDepends ()
+    {
+        foreach ($this->_modules as $module) {
+            $name = $module[0]['module'];
+            $status = $module[0]['active'];
+            $depends = $module[0]['depends'];
+            $this->_depends[$name] = array(
+                'status' => $status,
+                'depends' => $this->_dependsToString($depends, false)
+            );
+        }
     }
 
     /**
@@ -339,16 +357,42 @@ HTML;
 HTML;
     }
 
+    protected function _getDependsForm ()
+    {
+        $serializedDepends = $this->_getSerializedDepends();
+
+        return <<<HTML
+        <form id="srlzdepends-form" name="srlzdepends-form" style="display:none">
+            <textarea name="srlzdepends">{$serializedDepends}</textarea>
+        </form>
+HTML;
+
+    }
+
+    /**
+     * Returns serialized instance variable _depends
+     *
+     * @return string
+     */
+    protected function _getSerializedDepends()
+    {
+        return serialize($this->_depends);
+    }
+
     /**
      * Returns module dependecies as comma separated string
      *
-     * @param $depends
+     * @param      $depends
+     * @param bool $noDependenciesOutput
      * @return string
      */
-    protected function _dependsToString($depends)
+    protected function _dependsToString($depends, $noDependenciesOutput = true)
     {
         $collectedDepends = array();
         $dependsAsString = 'This module has no dependencies.';
+        if (!$noDependenciesOutput) {
+            $dependsAsString = '';
+        }
         if (count($depends) > 0) {
             foreach ($depends as $module => $val) {
                 $collectedDepends[] = $module;
@@ -456,7 +500,7 @@ HTML;
 
             $count++;
         }
-
+        $this->_collectDepends();
         return $body . '</body>';
     }
 }
